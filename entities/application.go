@@ -10,10 +10,11 @@ const (
 var (
 	PrintOutChan = make(chan PrintOut)
 
-	//* WS Requirement
-	CentralAuthHost  = "127.0.0.1:8081" //! Buat diharcode, jangan konfigurasi
-	SessionMode      = true             //! buat hardcode, jangan konfigurasi
-	SecureWSProtocol = false            //! Isi false jika tidak menggunakan ssl, isi true jika menggunakan ssl
+	//* CA Requirement
+	UseCentralAuthority = true             //! Buat dihardcode, jangan konfigurasi. Digunakan untuk mode central yang harus di authorization oleh CA
+	CentralAuthHost     = "127.0.0.1:8081" //! Buat diharcode, jangan konfigurasi
+	SessionMode         = true             //! buat hardcode, jangan konfigurasi
+	SecureWSProtocol    = false            //! Isi false jika tidak menggunakan ssl, isi true jika menggunakan ssl
 )
 
 type PrintOut struct {

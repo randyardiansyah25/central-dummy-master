@@ -10,7 +10,7 @@ import (
 	"github.com/randyardiansyah25/libpkg/util/env"
 )
 
-// * WS Requirement
+// * CA Requirement
 type SessionRepo interface {
 	OpenSession(centralCode string) (sessionId string, er error)
 }

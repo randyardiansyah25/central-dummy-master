@@ -3,6 +3,7 @@ package main
 import (
 	"central-dummy-master/delivery"
 	"central-dummy-master/delivery/router"
+	"central-dummy-master/entities"
 	"central-dummy-master/repository/databasefactory"
 	"central-dummy-master/usecase"
 	"os"
@@ -17,13 +18,15 @@ import (
 func main() {
 	go delivery.PrintoutObserver()
 
-	//* WS Requirement
-	er := usecase.OpenCentralSession()
-	if er != nil {
-		_ = glg.Error(er.Error())
-		os.Exit(1)
+	//* CA Requirement
+	if entities.UseCentralAuthority {
+		er := usecase.OpenCentralSession()
+		if er != nil {
+			_ = glg.Error(er.Error())
+			os.Exit(1)
+		}
 	}
-	
+
 	router.Start()
 }
 

@@ -14,7 +14,7 @@ import (
 	"github.com/randyardiansyah25/wsbase-handler"
 )
 
-// * WS Requirement
+// * CA Requirement
 func OpenCentralSession() (er error) {
 
 	//* Generate Central Code
@@ -54,6 +54,9 @@ func OpenCentralSession() (er error) {
 
 		period := env.GetInt("app.reconnect_period")
 		client.SetReconnectPeriod(time.Duration(period) * time.Second)
+
+		//* Digunakan untuk penanganan saat menerima pesan dari websocket server
+		//* Lebih lanjut baca di https://github.com/randyardiansyah25/wsbase-handler/blob/master/README.md#client
 		client.SetMessageHandler(func(m wsbase.Message) {
 			j, _ := json.MarshalIndent(m, "", "    ")
 			entities.PrintLog("receive message : ")
